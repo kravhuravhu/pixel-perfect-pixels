@@ -52,3 +52,7 @@ body { line-height:1.2; }
 .personal-grid>div:nth-child(3) dd { max-width:135px; }
 .personal-grid>div:last-child dd { max-width:175px; }
 @media(max-width:700px) { .sidebar { height:auto; } .nav-item img { width:18px; height:18px; } .nav-item { height:38px; } .profile-panel { margin-right:0; } .timesheet-metrics { grid-template-columns:1fr 1fr; } .personal-grid { grid-template-columns:1fr 1fr; } }
+.password-info { align-self:start; }
+.notice { font-weight:400; }
+.documents-table .download { border:0; }
+@media(min-width:1001px) { .balance-compact { padding-top:12px; padding-bottom:9px; } .balance-compact h2 { margin-bottom:16px; } }
