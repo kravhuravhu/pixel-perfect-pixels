@@ -21,3 +21,34 @@
 @media(max-width:1200px) { .nks-app { padding:25px; } .app-layout { grid-template-columns:220px minmax(0,1fr); gap:20px; } .app-header { gap:40px; padding-left:15px; } .nav-item { font-size:18px; gap:14px; padding:0 17px; } .split-layout { grid-template-columns:minmax(0,1fr) 280px; gap:16px; } .employee span { font-size:21px; } .timesheet-panel { margin-right:0; } .dashboard-grid { grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr); gap:16px; } .stats-grid { gap:12px; } .stat { padding:9px 10px; } .stat-title { font-size:11px; } .progress-actions { gap:10px; } .progress-actions .nks-button { min-width:0; } .balance-compact .balance-list { gap:10px; } .profile-overview { grid-template-columns:135px 1fr; gap:10px; } .profile-details>div { grid-template-columns:100px 1fr; font-size:12px; } .profile-details dd { white-space:normal; } .asset-card dl { grid-template-columns:repeat(3,1fr); gap:12px; } .asset-card img { width:75px; height:65px; } .asset-card-head .nks-button { font-size:10px; } .security-row { gap:10px; flex-wrap:wrap; } .security-row p { font-size:11px; } .form-grid { grid-template-columns:1fr 1fr; gap:15px; } .leave-fields { padding:20px 5px 0; } .leave-fields textarea,.upload-box { width:100%; } .notification-item { gap:10px; } .notification-item p { font-size:11px; } }
 @media(max-width:1000px) { .split-layout,.dashboard-grid { grid-template-columns:1fr; } .stack { min-width:0; } .sidebar { min-height:623px; } .app-header { gap:25px; } .employee span { font-size:18px; } .employee-avatar { width:36px; height:36px; } .page-heading { margin-top:7px; } .page-heading p { max-width:180px; } .profile-main,.security-main,.asset-main { min-height:0; } .security-main>.notice,.asset-main>.notice { margin-top:25px; } .stats-grid { grid-template-columns:repeat(2,1fr); margin-bottom:20px; } .timesheet-table { min-width:800px; } .timesheet-total { display:flex; gap:20px; } .timesheet-bottom { gap:15px; } .timesheet-metrics>div { padding:0 10px; } .timesheet-metrics>div:last-child { padding-right:0; } .deadline { margin-right:0; font-size:11px; } }
 @media(max-width:700px) { .nks-app { padding:16px; } .app-header { height:auto; min-height:90px; gap:12px; flex-wrap:wrap; padding:0; } .brand { flex-basis:150px; } .brand strong { font-size:25px; } .brand span { font-size:20px; padding:7px; } .brand small { font-size:9px; } .employee { margin-left:auto; gap:6px; } .employee span { font-size:14px; } .employee small { font-size:9px; } .employee-avatar { width:30px; height:30px; } .employee-avatar svg { width:30px; height:30px; } .page-heading { order:3; width:100%; margin:0 0 12px; } .page-heading p { max-width:none; } .app-layout { display:block; } .sidebar { min-height:0; padding:0; margin-bottom:16px; background:transparent; } .sidebar nav { display:flex; overflow:auto; gap:8px; padding-bottom:5px; } .nav-item { height:38px; padding:0 10px; gap:7px; font-size:13px; background:var(--card); border-radius:5px; } .nav-item>span { font-size:14px; width:16px; } .nav-item.is-active:before { width:3px; inset:5px auto 5px 0; } .logout { display:none; } .stat { height:118px; padding:12px 16px; } .stat-title { font-size:12px; } .metrics { gap:10px; font-size:12px; } .progress-actions { flex-wrap:wrap; } .notification-line { flex-wrap:wrap; } .notification-line time { margin-left:24px; } .split-layout { gap:16px; } .timesheet-header { flex-wrap:wrap; gap:8px; } .timesheet-header .badge { margin-left:auto; } .deadline { width:100%; margin-left:0; } .timesheet-metrics { grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:20px; } .timesheet-metrics>div { border:0; padding:0; } .timesheet-metrics>div:last-child { grid-column:1/-1; } .timesheet-bottom { grid-template-columns:1fr; } .timesheet-total { flex-wrap:wrap; gap:12px; } .asset-heading { align-items:flex-start; gap:8px; } .asset-heading .nks-button { white-space:normal; max-width:150px; height:auto; min-height:30px; } .asset-card { gap:10px; } .asset-card img { width:70px; height:60px; } .asset-card-head { flex-wrap:wrap; gap:5px; } .asset-card-head h3 { font-size:14px; } .asset-card dl { grid-template-columns:1fr 1fr; font-size:11px; } .asset-card dl>div:last-child { grid-column:1/-1; } .documents-table { min-width:560px; } .profile-panel { padding:20px 16px; } .profile-overview { grid-template-columns:1fr; } .profile-photo img { margin:0 auto 15px; } .profile-photo .nks-button { display:flex; margin:0 auto; } .profile-photo small { text-align:center; } .profile-details>div { grid-template-columns:105px 1fr; font-size:12px; } .personal-grid { grid-template-columns:1fr 1fr; font-size:12px; } .security-row .nks-button { margin-left:48px; } .activity-table { min-width:610px; } .notifications-feed { padding:18px 12px; } .notification-item>.symbol-block { width:28px; height:42px; } .notification-item h3 { font-size:12px; } .notification-item p,.notification-item time { font-size:10px; line-height:1.4; } .notification-item>.badge { font-size:10px; padding:0 5px; } .notification-item { gap:9px; } }
+/* Reference calibration: keep the Canva rhythm independent of Tailwind's reset. */
+body { line-height:1.2; }
+.brand span { padding:8px 7px; }
+.brand small { margin-top:3px; }
+.sidebar { height:623px; align-self:start; }
+.nav-item { height:54px; }
+.nav-item.is-active:before { inset:6px auto 6px 0; }
+.nav-item img { width:26px; height:26px; object-fit:contain; flex-shrink:0; }
+.progress-title p { margin-top:5px; }
+.progress-panel { padding-bottom:19px; }
+.balance-compact .balance-row { min-height:65px; }
+.balance-compact .balance-row strong,.balance-compact .balance-row small { margin-top:5px; }
+.mini-asset>div { padding:7px 9px; min-height:65px; }
+.mini-assets .symbol-block { width:41px; }
+.timesheet-panel { padding:15px 16px 11px; }
+.timesheet-table td:first-child { white-space:nowrap; font-size:9px; padding-left:11px; padding-right:1px; }
+.timesheet-table th { white-space:nowrap; }
+.timesheet-table td { padding-top:1px; padding-bottom:1px; }
+.timesheet-metrics { grid-template-columns:repeat(4,1fr) 2.65fr; }
+.timesheet-metrics>div { padding-left:24px; }
+.timesheet-table col:nth-child(3) { width:12.5%; }
+.timesheet-table col:nth-child(4) { width:21%; }
+.timesheet-table col:nth-child(6) { width:17%; }
+.info-row strong { width:100px; flex-shrink:0; }
+.contract-panel .info-row:last-child strong { width:auto; white-space:nowrap; }
+.profile-details>div { margin:7px 0 20px; }
+.profile-panel { margin-right:19px; }
+.personal-grid { grid-template-columns:1fr 1fr 1.6fr; }
+.personal-grid>div:nth-child(3) dd { max-width:135px; }
+.personal-grid>div:last-child dd { max-width:175px; }
+@media(max-width:700px) { .sidebar { height:auto; } .nav-item img { width:18px; height:18px; } .nav-item { height:38px; } .profile-panel { margin-right:0; } .timesheet-metrics { grid-template-columns:1fr 1fr; } .personal-grid { grid-template-columns:1fr 1fr; } }

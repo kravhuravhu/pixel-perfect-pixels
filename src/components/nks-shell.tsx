@@ -2,12 +2,20 @@ import { Link, useLocation } from '@tanstack/react-router';
 import { LogOut, UserRound } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import type { ReactNode } from 'react';
+import dashboardIcon from '@/assets/nav-dashboard.asset.json';
+import timesheetsIcon from '@/assets/nav-timesheets.asset.json';
+import leaveIcon from '@/assets/nav-leave.asset.json';
+import projectsIcon from '@/assets/nav-projects.asset.json';
+import assetsIcon from '@/assets/nav-assets.asset.json';
+import documentsIcon from '@/assets/nav-documents.asset.json';
+import profileIcon from '@/assets/nav-profile.asset.json';
+import notificationsIcon from '@/assets/nav-notifications.asset.json';
 
 const navigation = [
-  ['/', '📊', 'Dashboard'], ['/timesheets', '📋', 'Timesheets (All)'],
-  ['/leave', '🏖️', 'Leave Requests'], ['/projects', '📊', 'My Projects'],
-  ['/assets', '💻', 'Loaned Assets'], ['/documents', '💻', 'Documents'],
-  ['/profile', '👥', 'My Profile'], ['/notifications', '🔐', 'Notifications'],
+  ['/', dashboardIcon.url, 'Dashboard'], ['/timesheets', timesheetsIcon.url, 'Timesheets (All)'],
+  ['/leave', leaveIcon.url, 'Leave Requests'], ['/projects', projectsIcon.url, 'My Projects'],
+  ['/assets', assetsIcon.url, 'Loaned Assets'], ['/documents', documentsIcon.url, 'Documents'],
+  ['/profile', profileIcon.url, 'My Profile'], ['/notifications', notificationsIcon.url, 'Notifications'],
 ] as const;
 
 export function pageHead(title: string) {
@@ -24,7 +32,7 @@ export function NksShell({ title, breadcrumb, children }: { title?: string; brea
       <div className="employee"><div><span>Khuliso Ravhuravhu</span><small>Software Developer</small></div><div className="employee-avatar"><UserRound aria-hidden="true" /></div></div>
     </header>
     <div className="app-layout">
-      <aside className="sidebar"><nav aria-label="Main navigation">{navigation.map(([to, icon, label]) => <Link key={to} to={to} className={`nav-item ${pathname === to || (to === '/profile' && pathname === '/security') ? 'is-active' : ''}`}><span aria-hidden="true">{icon}</span>{label}</Link>)}</nav><Button variant="quiet" className="logout" onClick={() => window.alert('This is a frontend recreation; no login session is connected.')}><LogOut />Log Out</Button></aside>
+      <aside className="sidebar"><nav aria-label="Main navigation">{navigation.map(([to, icon, label]) => <Link key={to} to={to} className={`nav-item ${pathname === to || (to === '/profile' && pathname === '/security') ? 'is-active' : ''}`}><img src={icon} alt="" aria-hidden="true"/>{label}</Link>)}</nav><Button variant="quiet" className="logout" onClick={() => window.alert('This is a frontend recreation; no login session is connected.')}><LogOut />Log Out</Button></aside>
       <main className={`page-content ${pathname === '/' ? 'dashboard-content' : ''}`}>{children}</main>
     </div>
   </div>;
