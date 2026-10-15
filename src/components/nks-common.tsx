@@ -1,0 +1,11 @@
+import type { ReactNode } from 'react';
+import { Button } from '@/components/ui/button';
+import { Headset } from 'lucide-react';
+
+export function Badge({ children, tone = 'green' }: { children: ReactNode; tone?: 'green' | 'gold' | 'purple' | 'red' }) { return <span className={`badge badge-${tone}`}>{children}</span>; }
+export function Block({ children, className = '' }: { children: ReactNode; className?: string }) { return <section className={`panel ${className}`}>{children}</section>; }
+export function Dot({ className = '' }: { className?: string }) { return <span className={`symbol-block ${className}`} aria-hidden="true" />; }
+export function Notice({ title, children }: { title?: string; children: ReactNode }) { return <aside className="notice"><Dot /><div>{title && <strong>{title}</strong>}<p>{children}</p></div></aside>; }
+export function Help({ documents = false }: { documents?: boolean }) { return <Block><h2>Need Help?</h2><div className="help-body"><Headset /><div><p>{documents ? 'Can’t find the document you need? Contact HR and we will assist you.' : 'Report an issue with your asset or request an assistance from IT.'}</p><Button variant="goldOutline" onClick={() => window.alert(documents ? 'Please contact your HR department.' : 'Please contact your IT department.')}><Dot />{documents ? 'Contact HR' : 'Request Support'}</Button></div></div></Block>; }
+export const leaveBalances = [['Annual Leave', '12 Days', '20 Days'], ['Family Leave', '3 Days', '4 Days'], ['Sick Leave', '24 Days', '30 Days'], ['Unpaid Leave', '0 Days', 'No Limit']];
+export function LeaveBalance({ compact = false }: { compact?: boolean }) { return <Block className={compact ? 'balance-compact' : 'balance-full'}><h2>Leave Balance Summary</h2><div className="balance-list">{(compact ? [leaveBalances[0], leaveBalances[2], leaveBalances[1], leaveBalances[3]] : leaveBalances).map(([name, days, total]) => <div className="balance-row" key={name}><Dot /><div><span>{name}</span><strong>{days}</strong><small>Available</small></div>{!compact && <div className="entitlement"><strong>{total}</strong><small>Total Entitlement</small></div>}</div>)}</div>{!compact && <p className="leave-year"><b>Leave Year:</b> 01 Jan 2026 — 31 Dec 2026</p>}{compact && <Button variant="gold" asChild><a href="/leave">Apply For Leave</a></Button>}</Block>; }
