@@ -10,7 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AssetsRouteImport } from './routes/assets'
+import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as LeaveRouteImport } from './routes/leave'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as SecurityRouteImport } from './routes/security'
 import { Route as TimesheetsRouteImport } from './routes/timesheets'
 
 const IndexRoute = IndexRouteImport.update({
@@ -18,9 +24,39 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AssetsRoute = AssetsRouteImport.update({
+  id: '/assets',
+  path: '/assets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentsRoute = DocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LeaveRoute = LeaveRouteImport.update({
   id: '/leave',
   path: '/leave',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecurityRoute = SecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TimesheetsRoute = TimesheetsRouteImport.update({
@@ -31,31 +67,83 @@ const TimesheetsRoute = TimesheetsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/assets': typeof AssetsRoute
+  '/documents': typeof DocumentsRoute
   '/leave': typeof LeaveRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/projects': typeof ProjectsRoute
+  '/security': typeof SecurityRoute
   '/timesheets': typeof TimesheetsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/assets': typeof AssetsRoute
+  '/documents': typeof DocumentsRoute
   '/leave': typeof LeaveRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/projects': typeof ProjectsRoute
+  '/security': typeof SecurityRoute
   '/timesheets': typeof TimesheetsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/assets': typeof AssetsRoute
+  '/documents': typeof DocumentsRoute
   '/leave': typeof LeaveRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/projects': typeof ProjectsRoute
+  '/security': typeof SecurityRoute
   '/timesheets': typeof TimesheetsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/leave' | '/timesheets'
+  fullPaths:
+    | '/'
+    | '/assets'
+    | '/documents'
+    | '/leave'
+    | '/notifications'
+    | '/profile'
+    | '/projects'
+    | '/security'
+    | '/timesheets'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/leave' | '/timesheets'
-  id: '__root__' | '/' | '/leave' | '/timesheets'
+  to:
+    | '/'
+    | '/assets'
+    | '/documents'
+    | '/leave'
+    | '/notifications'
+    | '/profile'
+    | '/projects'
+    | '/security'
+    | '/timesheets'
+  id:
+    | '__root__'
+    | '/'
+    | '/assets'
+    | '/documents'
+    | '/leave'
+    | '/notifications'
+    | '/profile'
+    | '/projects'
+    | '/security'
+    | '/timesheets'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AssetsRoute: typeof AssetsRoute
+  DocumentsRoute: typeof DocumentsRoute
   LeaveRoute: typeof LeaveRoute
+  NotificationsRoute: typeof NotificationsRoute
+  ProfileRoute: typeof ProfileRoute
+  ProjectsRoute: typeof ProjectsRoute
+  SecurityRoute: typeof SecurityRoute
   TimesheetsRoute: typeof TimesheetsRoute
 }
 
@@ -68,11 +156,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/assets': {
+      id: '/assets'
+      path: '/assets'
+      fullPath: '/assets'
+      preLoaderRoute: typeof AssetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/documents': {
+      id: '/documents'
+      path: '/documents'
+      fullPath: '/documents'
+      preLoaderRoute: typeof DocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/leave': {
       id: '/leave'
       path: '/leave'
       fullPath: '/leave'
       preLoaderRoute: typeof LeaveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/security': {
+      id: '/security'
+      path: '/security'
+      fullPath: '/security'
+      preLoaderRoute: typeof SecurityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/timesheets': {
@@ -87,7 +217,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AssetsRoute: AssetsRoute,
+  DocumentsRoute: DocumentsRoute,
   LeaveRoute: LeaveRoute,
+  NotificationsRoute: NotificationsRoute,
+  ProfileRoute: ProfileRoute,
+  ProjectsRoute: ProjectsRoute,
+  SecurityRoute: SecurityRoute,
   TimesheetsRoute: TimesheetsRoute,
 }
 export const routeTree = rootRouteImport
