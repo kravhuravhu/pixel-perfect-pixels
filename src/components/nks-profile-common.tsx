@@ -1,0 +1,4 @@
+import { Link } from '@tanstack/react-router';
+import { Block, Dot } from '@/components/nks-common';
+export function ProfileTabs({ security = false }: { security?: boolean }) { return <nav className="tabs" aria-label="Profile views"><Link to="/profile" className={!security ? 'selected' : ''}>Profile</Link><Link to="/security" className={security ? 'selected' : ''}>Security</Link></nav>; }
+export function InfoPanel({ title, rows, contract = false }: { title:string; rows: string[][]; contract?:boolean }) { return <Block className={`info-panel ${contract ? 'contract-panel' : ''}`}><h2>{title}</h2>{contract && <p className="contract-note">Contract details are managed by your organization. You can only view this information</p>}{rows.map(([label,value],i) => <div className="info-row" key={i}>{!contract && <Dot/>}<span>{label}</span><strong>{value}</strong></div>)}</Block>; }

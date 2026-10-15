@@ -1,24 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
-});
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { Clock3, Hourglass, UserRound, UsersRound } from 'lucide-react';
+import { NksShell, pageHead } from '@/components/nks-shell';
+import { Block, Badge, Dot, LeaveBalance } from '@/components/nks-common';
+import { Button } from '@/components/ui/button';
+export const Route = createFileRoute('/')({ head: () => pageHead('Dashboard'), component: Dashboard });
+function Dashboard() { return <NksShell><div className="stats-grid">{[{ icon: Clock3, title: 'Timesheets Status', value: <>Pending<br/>Submission</>, note: 'Due: 29 Jun 2026', pending: true }, { icon: Hourglass, title: 'Leave Balance', value: <>12<span>Days</span></>, note: 'Requests to Review' }, { icon: UserRound, title: 'Active Project', value: '4', note: '2 Active This Month' }, { icon: UsersRound, title: 'My Assets', value: '2', note: 'Currently Assigned' }].map(s => <section className="stat" key={s.title}><div className="stat-title"><s.icon/><span>{s.title}</span></div><div className={`stat-value ${s.pending ? 'stat-pending' : ''}`}>{s.value}</div><p>{s.note}</p></section>)}</div><div className="dashboard-grid"><div><Block className="progress-panel"><h2>June 2026 Timesheet Progress</h2><div className="progress-title"><div>Progress:<p>21 of 25 working days completed</p></div><strong>84%</strong></div><progress value={84} max={100} aria-label="Timesheet progress"/><div className="metrics"><div>Regular hours<strong>167h 30m</strong></div><div>Overtime<strong>08h 00m</strong></div><div>Leave Taken<strong>0 Days</strong></div><div>Status<strong><Badge tone="gold">Draft</Badge></strong></div></div><div className="progress-actions"><Button variant="gold" asChild><Link to="/timesheets"><Dot/>Continue Timesheet</Link></Button><Button variant="goldOutline" asChild><Link to="/timesheets"><Dot/>View Timesheet History</Link></Button></div></Block><section className="notifications-preview"><header><h2>Recent Notifications</h2><Button variant="gold" asChild><Link to="/notifications">View All</Link></Button></header>{[['Your timesheet for May 2026 has been approved by Mdu Sibiya','2 Days ago'],['Please submit your timesheet before 29 June 2026','4 Days ago'],['Your 2026 contract is expiring in 3 months','1 Week ago']].map(([text,time]) => <div className="notification-line" key={text}><Clock3/><p>{text}</p><time>{time}</time></div>)}</section></div><div><LeaveBalance compact/><Block className="mini-assets"><header><h2>My Assets</h2><Link to="/assets">View All Assets</Link></header>{[['Dell Latitude 7210','S84***','10 Feb 2026','Active'],['HP Monitor','S24***','03 Nov 2025','Returned']].map(([name,serial,date,status]) => <div className="mini-asset" key={name}><div><Dot/><section><h3>{name}</h3><p>Asset Serial Number: {serial}</p><small>Assigned on: {date}</small></section></div><Badge tone={status === 'Active' ? 'green' : 'gold'}>{status}</Badge></div>)}<Button variant="gold" asChild><Link to="/assets"><Dot/>Request Repair / Report Issue</Link></Button></Block></div></div></NksShell>; }
